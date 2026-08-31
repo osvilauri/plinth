@@ -1,0 +1,7 @@
+node_modules/
+dist/
+storybook-static/
+
+# Generated from design/tokens.json by tokens-to-css. Never edited by hand,
+# never committed — the JSON is the source of truth.
+src/styles/tokens.css

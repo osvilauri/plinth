@@ -1,0 +1,39 @@
+.figure {
+  margin: 0;
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  /* Claimed before the file arrives, so nothing below it moves on load. */
+  background: var(--color-surface-sunken);
+}
+
+.square    { aspect-ratio: 1 / 1; }
+.portrait  { aspect-ratio: 3 / 4; }
+.landscape { aspect-ratio: 4 / 3; }
+.wide      { aspect-ratio: 16 / 9; }
+.auto      { aspect-ratio: auto; }
+
+.r-none    { border-radius: 0; }
+.r-tight   { border-radius: var(--radius-tight); }
+.r-control { border-radius: var(--radius-control); }
+.r-card    { border-radius: var(--radius-card); }
+.r-pill    { border-radius: var(--radius-pill); }
+
+.img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cover   { object-fit: cover; }
+.contain { object-fit: contain; }
+
+.caption {
+  font-size: var(--type-size-caption);
+  line-height: var(--type-leading-ui);
+  color: var(--color-text-muted);
+}

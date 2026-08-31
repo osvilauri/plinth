@@ -1,0 +1,85 @@
+.field {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.shell {
+  display: flex;
+  align-items: center;
+  gap: var(--control-gap);
+
+  background: var(--color-surface);
+  border: var(--control-border-width) solid var(--color-border);
+  border-radius: var(--radius-control);
+  padding-inline: var(--control-padding-x);
+
+  transition:
+    border-color var(--motion-duration-control) var(--motion-easing),
+    background-color var(--motion-duration-control) var(--motion-easing);
+}
+
+.shell:hover:not(:has(input:disabled)) {
+  border-color: var(--color-border-strong);
+}
+
+/* The ring goes on the shell, not the bare input, so it wraps the icon too. */
+.shell:focus-within {
+  outline: var(--control-focus-width) solid var(--color-focus);
+  outline-offset: var(--space-hair);
+  border-color: var(--color-accent);
+}
+
+.shell:has(input:disabled) {
+  background: var(--color-surface-sunken);
+  cursor: not-allowed;
+}
+
+.invalid {
+  border-color: var(--color-danger);
+}
+.invalid:focus-within {
+  border-color: var(--color-danger);
+}
+
+/* Heights match Button, so a field and its action sit on the same line. */
+.sm { height: var(--control-height-sm); font-size: var(--type-size-label); }
+.md { height: var(--control-height-md); font-size: var(--type-size-body); }
+.lg { height: var(--control-height-lg); font-size: var(--type-size-lead); }
+
+.input {
+  flex: 1;
+  min-width: 0;
+  /* The shell owns the box; the input is only text. */
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: var(--color-text);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  color: var(--color-text-muted);
+}
+
+.leading {
+  pointer-events: none;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--type-size-caption);
+  line-height: var(--type-leading-ui);
+  color: var(--color-danger-strong);
+}

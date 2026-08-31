@@ -1,0 +1,94 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--control-gap);
+
+  font-family: var(--type-family-ui);
+  font-weight: var(--type-weight-emphasis);
+  line-height: 1;
+
+  border: var(--control-border-width) solid transparent;
+  border-radius: var(--radius-control);
+  cursor: pointer;
+
+  transition:
+    background-color var(--motion-duration-control) var(--motion-easing),
+    border-color var(--motion-duration-control) var(--motion-easing),
+    color var(--motion-duration-control) var(--motion-easing);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Pending, not disabled: still focusable, still announced. */
+.button[aria-busy='true'] {
+  cursor: progress;
+}
+
+.label {
+  /* Keeps the label from being squeezed when an icon appears beside it. */
+  white-space: nowrap;
+}
+
+/* ---------- sizes ---------- */
+
+.sm {
+  height: var(--control-height-sm);
+  padding-inline: var(--space-sm);
+  font-size: var(--type-size-label);
+}
+
+.md {
+  height: var(--control-height-md);
+  padding-inline: var(--control-padding-x);
+  font-size: var(--type-size-body);
+}
+
+.lg {
+  height: var(--control-height-lg);
+  padding-inline: var(--control-padding-x-lg);
+  font-size: var(--type-size-lead);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* ---------- variants ---------- */
+
+.primary {
+  background: var(--color-accent);
+  color: var(--color-text-inverted);
+}
+.primary:hover:not(:disabled):not([aria-busy='true']) {
+  background: var(--color-accent-hover);
+}
+
+.secondary {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+.secondary:hover:not(:disabled):not([aria-busy='true']) {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-sunken);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-accent-text);
+}
+.ghost:hover:not(:disabled):not([aria-busy='true']) {
+  background: var(--color-accent-subtle);
+}
+
+.danger {
+  background: var(--color-danger);
+  color: var(--color-text-inverted);
+}
+.danger:hover:not(:disabled):not([aria-busy='true']) {
+  background: var(--color-danger-strong);
+}

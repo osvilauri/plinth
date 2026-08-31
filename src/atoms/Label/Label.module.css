@@ -1,0 +1,28 @@
+.group {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+
+  font-family: var(--type-family-ui);
+  font-size: var(--type-size-label);
+  font-weight: var(--type-weight-emphasis);
+  color: var(--color-text);
+  /* The label is a click target for its field; the cursor should say so. */
+  cursor: pointer;
+}
+
+.required {
+  color: var(--color-danger);
+  font-weight: var(--type-weight-body);
+}
+
+.hint {
+  font-size: var(--type-size-caption);
+  line-height: var(--type-leading-ui);
+  color: var(--color-text-muted);
+}

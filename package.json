@@ -1,0 +1,41 @@
+{
+  "name": "plinth",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A small design system built on design tokens, converted to CSS by tokens-to-css.",
+  "license": "MIT",
+  "author": "Osvaldo Morgan",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "tokens": "node scripts/build-tokens.mjs",
+    "prestorybook": "npm run tokens",
+    "storybook": "storybook dev -p 6006",
+    "prebuild-storybook": "npm run tokens",
+    "build-storybook": "storybook build",
+    "prebuild": "npm run tokens",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "npm run tokens && tsc --noEmit",
+    "check": "npm run typecheck"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.3.1",
+    "@fortawesome/free-solid-svg-icons": "^7.3.1",
+    "@fortawesome/react-fontawesome": "^3.5.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^10.5.10",
+    "@storybook/react-vite": "^10.5.10",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "storybook": "^10.5.10",
+    "tokens-to-css": "^1.0.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2"
+  }
+}

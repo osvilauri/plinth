@@ -1,0 +1,19 @@
+.icon {
+  flex: none;
+  vertical-align: -0.125em;
+}
+
+/* Sized against the text scale so a glyph never sits taller than its sentence. */
+.caption { width: var(--type-size-caption); height: var(--type-size-caption); }
+.label   { width: var(--type-size-label);   height: var(--type-size-label); }
+.body    { width: var(--type-size-body);    height: var(--type-size-body); }
+.lead    { width: var(--type-size-lead);    height: var(--type-size-lead); }
+.title   { width: var(--type-size-title);   height: var(--type-size-title); }
+.heading { width: var(--type-size-heading); height: var(--type-size-heading); }
+
+.inherit { color: inherit; }
+.muted   { color: var(--color-text-muted); }
+.accent  { color: var(--color-accent); }
+.danger  { color: var(--color-danger); }
+.warning { color: var(--color-warning); }
+.success { color: var(--color-success); }

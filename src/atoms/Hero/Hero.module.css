@@ -1,0 +1,77 @@
+.hero {
+  display: grid;
+  gap: var(--hero-gap);
+  padding-block: var(--hero-padding-y);
+  padding-inline: var(--space-lg);
+  background: var(--hero-background);
+}
+
+.copy {
+  display: grid;
+  gap: var(--space-md);
+  /* A measure, not a width: long lines are the fastest way to lose a reader. */
+  max-width: var(--hero-measure);
+}
+
+.start { justify-items: start; }
+
+.center {
+  justify-items: center;
+  text-align: center;
+}
+.center .copy {
+  justify-items: center;
+  margin-inline: auto;
+}
+
+/* Side by side once there is room; stacked before that, text first. */
+.split {
+  align-items: center;
+}
+@media (min-width: 56rem) {
+  .split {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: var(--type-size-caption);
+  font-weight: var(--type-weight-emphasis);
+  letter-spacing: var(--type-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-accent-text);
+}
+
+.title {
+  font-size: var(--type-size-hero);
+  font-weight: var(--type-weight-display);
+  line-height: var(--type-leading-heading);
+  letter-spacing: var(--type-tracking-display);
+}
+
+/* The hero size is for wide screens; below that it would wrap into a wall. */
+@media (max-width: 48rem) {
+  .title {
+    font-size: var(--type-size-display);
+  }
+}
+
+.lead {
+  margin: 0;
+  font-size: var(--type-size-lead);
+  line-height: var(--type-leading-prose);
+  color: var(--color-text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.media {
+  min-width: 0;
+}
