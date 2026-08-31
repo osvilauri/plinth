@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/react-vite'
+import { DocsPage } from './DocsPage'
 
 // The generated stylesheet first, then everything that reads from it. If the
 // order were reversed, every component would fall back to its unset defaults.
@@ -17,10 +18,16 @@ const preview: Preview = {
   tags: ['autodocs'],
 
   parameters: {
+    /**
+     * The canvas above the prose. Storybook's default page renders the whole
+     * `.md` before the first story, which on a long page looks like a component
+     * that failed to render. See `DocsPage.tsx`.
+     */
+    docs: { page: DocsPage },
     controls: { expanded: true },
     options: {
       storySort: {
-        order: ['Foundations', 'Atoms', 'Molecules', 'Organisms'],
+        order: ['Demo', 'Foundations', 'Atoms', 'Molecules', 'Organisms'],
       },
     },
   },
