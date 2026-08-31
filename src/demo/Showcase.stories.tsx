@@ -20,26 +20,22 @@ import { Form, type FormError } from '../organisms/Form/Form'
 import docs from './Showcase.md?raw'
 
 /**
- * An inline SVG as a data URI, so the page renders with no network and no
- * asset pipeline — the same approach the `Image` stories take.
+ * One photograph from Pexels, cropped two ways by the CDN rather than shipped
+ * twice. The original is 3500 × 2333 and 518 KB, which no page should ask for:
+ * `w=` brings the hero down to 106 KB, and the card's crop to 32 KB.
  *
- * Replace `DEMO_IMAGE` and `DEMO_THUMB` with real URLs when there are some;
- * nothing else has to change.
+ * Unlike the rest of the Storybook, these two need the network. If the demo has
+ * to render offline, download the file into this folder and import it instead —
+ * `Image` takes any string, so nothing else changes.
  */
-const sample = (label: string, from: string, to: string) =>
-  `data:image/svg+xml;utf8,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="${from}"/><stop offset="1" stop-color="${to}"/>
-      </linearGradient></defs>
-      <rect width="800" height="600" fill="url(#g)"/>
-      <text x="400" y="315" text-anchor="middle" fill="white"
-        font-family="monospace" font-size="40">${label}</text>
-    </svg>`,
-  )}`
+const PEXELS = 'https://images.pexels.com/photos/4439901/pexels-photo-4439901.jpeg'
 
-const DEMO_IMAGE = sample('tokens → css', '#4F46E5', '#F59E0B')
-const DEMO_THUMB = sample('nine components', '#4F46E5', '#10B981')
+const DEMO_IMAGE = `${PEXELS}?auto=compress&cs=tinysrgb&w=1600`
+const DEMO_THUMB = `${PEXELS}?auto=compress&cs=tinysrgb&w=800&h=450&fit=crop`
+
+/** What the photograph actually shows, which is not what it was searched for. */
+const DEMO_ALT =
+  'A laptop screen at an angle, showing syntax-highlighted source code in a dark editor, with a second monitor out of focus behind it.'
 
 /**
  * The page's own layout. Grid and spacing only — every value is a token, which
@@ -128,8 +124,10 @@ function LandingPage() {
         media={
           <Image
             src={DEMO_IMAGE}
-            alt="The token pipeline: a JSON file becoming a CSS stylesheet."
+            alt={DEMO_ALT}
             ratio="landscape"
+            // Above the fold, so it should not wait to be scrolled to.
+            loading="eager"
           />
         }
       />
