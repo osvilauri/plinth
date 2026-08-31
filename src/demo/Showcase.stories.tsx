@@ -270,8 +270,18 @@ function LandingPage() {
           </span>
         </div>
         {/* Pexels does not require attribution. It is here because a portfolio
-            that borrows someone's work and says nothing reads badly. */}
-        <small>Photograph by Markus Spiske on Pexels.</small>
+            that borrows someone's work and says nothing reads badly.
+
+            `target="_blank"` is not decoration: a story renders inside an
+            iframe, so a plain link would navigate the canvas out from under
+            itself and leave the reader stranded in a frame. */}
+        <small>
+          Photograph by{' '}
+          <a href="https://www.pexels.com/@markusspiske/" target="_blank" rel="noreferrer">
+            Markus Spiske
+          </a>{' '}
+          on Pexels.
+        </small>
       </footer>
     </div>
   )
