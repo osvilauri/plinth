@@ -9,6 +9,10 @@ npm like any other dependency. No component holds a literal colour, size,
 duration or font — if a value looks wrong, the token is wrong, and the token is
 the thing to change.
 
+Everything here is published as a static Storybook, built by the same command
+below: **<https://plinth-iota-one.vercel.app>**. The token pages there read the
+live stylesheet, so what they show is what the components actually use.
+
 ```bash
 npm install
 npm run storybook
