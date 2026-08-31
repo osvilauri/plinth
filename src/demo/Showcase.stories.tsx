@@ -88,17 +88,23 @@ const textarea: CSSProperties = {
 }
 
 const footer: CSSProperties = {
-  display: 'flex',
-  flexWrap: 'wrap',
+  display: 'grid',
   gap: 'var(--space-md)',
-  alignItems: 'center',
-  justifyContent: 'center',
+  justifyItems: 'center',
   padding: 'var(--space-xl) var(--space-lg)',
   background: 'var(--color-surface-sunken)',
   borderTop: 'var(--control-border-width) solid var(--color-border)',
   fontFamily: 'var(--type-family-ui)',
   fontSize: 'var(--type-size-caption)',
   color: 'var(--color-text-muted)',
+}
+
+const footerStats: CSSProperties = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: 'var(--space-md)',
+  alignItems: 'center',
+  justifyContent: 'center',
 }
 
 /** The whole page. Split out so the story stays readable. */
@@ -246,15 +252,20 @@ function LandingPage() {
       </section>
 
       <footer style={footer}>
-        <span>
-          <Icon icon={faPalette} size="label" tone="accent" /> 145 custom properties
-        </span>
-        <span>
-          <Icon icon={faLayerGroup} size="label" tone="accent" /> 3 tiers
-        </span>
-        <span>
-          <Icon icon={faCodeBranch} size="label" tone="accent" /> tokens-to-css
-        </span>
+        <div style={footerStats}>
+          <span>
+            <Icon icon={faPalette} size="label" tone="accent" /> 145 custom properties
+          </span>
+          <span>
+            <Icon icon={faLayerGroup} size="label" tone="accent" /> 3 tiers
+          </span>
+          <span>
+            <Icon icon={faCodeBranch} size="label" tone="accent" /> tokens-to-css
+          </span>
+        </div>
+        {/* Pexels does not require attribution. It is here because a portfolio
+            that borrows someone's work and says nothing reads badly. */}
+        <small>Photograph by Markus Spiske on Pexels.</small>
       </footer>
     </div>
   )
