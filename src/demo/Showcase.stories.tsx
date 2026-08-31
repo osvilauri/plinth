@@ -20,18 +20,24 @@ import { Form, type FormError } from '../organisms/Form/Form'
 import docs from './Showcase.md?raw'
 
 /**
- * One photograph from Pexels, cropped two ways by the CDN rather than shipped
- * twice. The original is 3500 × 2333 and 518 KB, which no page should ask for:
- * `w=` brings the hero down to 106 KB, and the card's crop to 32 KB.
- *
- * Unlike the rest of the Storybook, these two need the network. If the demo has
- * to render offline, download the file into this folder and import it instead —
- * `Image` takes any string, so nothing else changes.
+ * A screenshot of this Storybook, 800 × 450 and 28 KB as a 256-colour PNG:
+ * a UI capture has few colours, so a palette beats both a full-colour PNG
+ * (74 KB) and a JPEG, which would soften the text. The card renders it at
+ * 274 px wide, where it reads as the system rather than as a document.
  */
-const PEXELS = 'https://images.pexels.com/photos/4439901/pexels-photo-4439901.jpeg'
+import thumb from './storybook.png'
 
-const DEMO_IMAGE = `${PEXELS}?auto=compress&cs=tinysrgb&w=1600`
-const DEMO_THUMB = `${PEXELS}?auto=compress&cs=tinysrgb&w=800&h=450&fit=crop`
+/**
+ * The hero's photograph, from Pexels, resized by their CDN rather than shipped
+ * at source: the original is 3500 × 2333 and 518 KB, which no page should ask
+ * for, and `w=1600` brings it to 106 KB.
+ *
+ * This is the only asset in the Storybook that needs the network. If the demo
+ * ever has to render offline, download the file into this folder and import it
+ * the way `thumb` below is imported — `Image` takes any string.
+ */
+const DEMO_IMAGE =
+  'https://images.pexels.com/photos/4439901/pexels-photo-4439901.jpeg?auto=compress&cs=tinysrgb&w=1600'
 
 /** What the photograph actually shows, which is not what it was searched for. */
 const DEMO_ALT =
@@ -158,7 +164,7 @@ function LandingPage() {
           <Card
             eyebrow="Components"
             title="Six atoms, a molecule, an organism"
-            media={<Image src={DEMO_THUMB} alt="" ratio="wide" radius="tight" />}
+            media={<Image src={thumb} alt="" ratio="wide" radius="tight" />}
             actions={
               <Button variant="secondary" size="sm" iconEnd={faArrowRight}>
                 Browse them

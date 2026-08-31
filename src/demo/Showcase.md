@@ -10,6 +10,10 @@ This page is where it either holds together or does not.
 
 ## What is used where
 
+The card in the middle shows a screenshot of this Storybook, which makes the
+page mildly self-referential and is the point: the only picture of the system
+that cannot go stale in a way nobody notices is one taken from the system.
+
 | Section | Components |
 | --- | --- |
 | Opening | `Hero`, `Button`, `Image` |
