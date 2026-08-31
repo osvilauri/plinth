@@ -24,8 +24,13 @@ After a failed submit on a form with eight fields, the user's problem is not
 
 - It is `role="alert"`, so it announces itself. A failed submit is worth
   interrupting for — the user just acted and is waiting to hear what happened.
-- It is `tabIndex={-1}`, so you can move focus to it after a failed submit. That
-  puts a keyboard user *at the list*, not back at the top of the page.
+- It is `tabIndex={-1}`, and the `Form` moves focus to it when a submit produces
+  a new set of errors. That puts a keyboard user *at the list*, not back at the
+  top of the page. It is done here rather than left to the caller because the
+  summary does not exist until the render that adds it, so a submit handler that
+  tries to focus it finds nothing — including from inside
+  `requestAnimationFrame`. Focus is not taken on mount: a form rendered with
+  errors already showing has not just been submitted.
 - The `fieldId` must match the `id` you gave the field, because that is what the
   link jumps to.
 

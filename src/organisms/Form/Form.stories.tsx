@@ -152,16 +152,12 @@ export const Interactive: Story = {
             found.push({ fieldId: 'live-password', message: 'Use at least 12 characters.' })
           }
 
+          // Nothing here moves focus: the Form does it, because the summary
+          // does not exist in the DOM until the render that adds it.
           setErrors(found)
           if (found.length === 0) {
             setSubmitting(true)
             setTimeout(() => setSubmitting(false), 1500)
-          } else {
-            // Focus the summary, not the first field: the user hears how many
-            // things are wrong before being dropped into one of them.
-            requestAnimationFrame(() => {
-              document.querySelector<HTMLElement>('[role="alert"]')?.focus()
-            })
           }
         }}
       >

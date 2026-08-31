@@ -1,4 +1,4 @@
-import { useId, useRef, type FormHTMLAttributes, type ReactNode } from 'react'
+import { useEffect, useId, useRef, type FormHTMLAttributes, type ReactNode } from 'react'
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../../atoms/Button/Button'
 import { Icon } from '../../atoms/Icon/Icon'
@@ -69,6 +69,29 @@ export function Form({
   const summaryRef = useRef<HTMLDivElement>(null)
   const hasErrors = (errors?.length ?? 0) > 0
 
+  /**
+   * Move focus to the summary when a submit produces a new set of errors.
+   *
+   * This is the half of the pattern a caller cannot get right from the outside:
+   * the summary does not exist in the DOM until the render that adds it, so
+   * focusing it from a submit handler — even inside `requestAnimationFrame` —
+   * finds nothing and silently does nothing.
+   *
+   * Keyed on the errors' content rather than the array's identity, so a caller
+   * passing a fresh literal on every render does not have focus yanked back
+   * mid-typing. Mount is deliberately excluded: a form rendered with errors
+   * already showing has not just been submitted, and stealing focus on load
+   * would drop the user into the middle of a page they have not read.
+   */
+  const errorKey = errors?.map((error) => `${error.fieldId}:${error.message}`).join('|') ?? ''
+  const lastErrorKey = useRef(errorKey)
+  useEffect(() => {
+    if (errorKey !== '' && errorKey !== lastErrorKey.current) {
+      summaryRef.current?.focus()
+    }
+    lastErrorKey.current = errorKey
+  }, [errorKey])
+
   return (
     <form
       className={[styles.form, stacked ? styles.stacked : null, className].filter(Boolean).join(' ')}
@@ -99,8 +122,9 @@ export function Form({
           // A failed submit is worth interrupting for: the user just acted and
           // is waiting to hear what happened.
           role="alert"
-          // Focusable so the caller can move focus here after a failed submit,
-          // which puts the keyboard user at the list rather than at the top.
+          // Focusable so the effect above can move focus here after a failed
+          // submit, which puts the keyboard user at the list of problems rather
+          // than at the top of the page.
           tabIndex={-1}
         >
           <p className={styles.summaryTitle}>
