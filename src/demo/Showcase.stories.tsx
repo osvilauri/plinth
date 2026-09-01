@@ -123,7 +123,7 @@ function LandingPage() {
     <div>
       <Hero
         eyebrow="Design system"
-        title="Nine components, one JSON file."
+        title="Eight components, one JSON file."
         lead="A palette, a type scale and the parts that use them. Change a token and every component that touches it moves — because none of them holds a value of its own."
         actions={
           <>

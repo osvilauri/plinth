@@ -1,7 +1,7 @@
 Every component in the system, on one page, doing the job it was built for.
 
 The page is Plinth presenting itself: the design system's own landing page,
-assembled from its own nine components. Nothing here is a special case — no
+assembled from its own eight components. Nothing here is a special case — no
 component gained a prop to make this page possible, and the page holds no colour,
 size or spacing of its own. Every value in it is a `var(--…)`.
 
