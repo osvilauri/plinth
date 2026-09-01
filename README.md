@@ -1,6 +1,6 @@
 # Plinth
 
-A small design system: a palette, a type scale, and nine components built on
+A small design system: a palette, a type scale, and eight components built on
 design tokens.
 
 The tokens live in one JSON file and become CSS custom properties through
